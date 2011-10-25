@@ -1,5 +1,11 @@
 require 'sinatra'
-  
+require 'json'
+require './show'
+
 get '/' do
-  'Hello world!'
+  erb :index
+end
+
+get '/api' do
+  JSON(Show.list)
 end
