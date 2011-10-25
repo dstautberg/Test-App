@@ -11,7 +11,7 @@ class Show
 
   def self.list
     # I used Mechanize here because it handles cookies and redirects automatically.  When I tried to use the standard Net::HTTP 
-    # I got a page back saying that cookies needed to be enabled in the browser.
+    # library I got a page back saying that cookies needed to be enabled in the browser.
     agent = Mechanize.new
     page = agent.get(NetflixUri)
     # Uncomment this to see what html is being returned:
