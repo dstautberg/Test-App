@@ -1,6 +1,10 @@
 source :rubygems
 gem "sinatra"
 gem "nokogiri"
-gem "rack-test"
-gem "json_pure"
+gem "json_pure", :require => "json"
 gem "mechanize"
+
+group :test do
+  gem "test-unit", :require => "test/unit"
+  gem "rack-test", :require => "rack/test"
+end

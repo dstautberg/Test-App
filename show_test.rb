@@ -1,7 +1,7 @@
-require './show'
-require 'test/unit'
-require 'rack/test'
-require 'json'
+require "rubygems"
+require "bundler/setup"
+Bundler.require(:test)
+require "./show"
 
 class ShowTest < Test::Unit::TestCase
 

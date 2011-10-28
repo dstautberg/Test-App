@@ -1,6 +1,6 @@
-require "nokogiri"
-require 'open-uri'
-require 'mechanize'
+require "rubygems"
+require "bundler/setup"
+Bundler.require(:default)
 
 # This class retrieves the list of new tv shows or movies available for streaming on the Netflix website.
 
