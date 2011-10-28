@@ -1,6 +1,7 @@
-require 'sinatra'
-require 'json'
-require './show'
+require "rubygems"
+require "bundler/setup"
+Bundler.require(:default)
+require "./show"
 
 get '/' do
   erb :index
