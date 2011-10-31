@@ -1,7 +1,7 @@
-require './api'
-require 'test/unit'
-require 'rack/test'
-require 'json'
+require "rubygems"
+require "bundler/setup"
+Bundler.require(:test)
+require "./api"
 
 class ApiTest < Test::Unit::TestCase
   include Rack::Test::Methods
