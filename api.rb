@@ -1,16 +1,16 @@
 require "rubygems"
 require "bundler/setup"
 Bundler.require(:default)
-require "./show"
+require "./netflix_scraper"
 
 get '/' do
   erb :index
 end
 
-get '/api' do
-  JSON(Show.list)
+get '/new_arrivals' do
+  JSON(NetflixScraper.new_arrivals)
 end
 
 get "/search/:text" do |text|
-  JSON(Show.search(text))
+  JSON(NetflixScraper.search(text))
 end

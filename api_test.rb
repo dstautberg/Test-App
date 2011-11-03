@@ -10,8 +10,8 @@ class ApiTest < Test::Unit::TestCase
     Sinatra::Application
   end
 
-  def test_show_list
-    get '/api'
+  def test_new_arrivals
+    get '/new_arrivals'
     result = JSON(last_response.body)
     assert result, "Invalid response: #{last_response.body[0..100]}..."
     assert result.size > 0, "Result did not have any shows: #{result.inspect}"

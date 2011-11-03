@@ -7,4 +7,5 @@ gem "mechanize"
 group :test do
   gem "test-unit", :require => "test/unit"
   gem "rack-test", :require => "rack/test"
+  gem "fakeweb"
 end
