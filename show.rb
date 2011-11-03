@@ -10,14 +10,41 @@ class Show
   NetflixUri = "http://www.netflix.com/BrowseGenres/Watch_Instantly/gev?siw=1"
 
   def self.list
-    # I used Mechanize here because it handles cookies and redirects automatically.  When I tried to use the standard Net::HTTP 
-    # library I got a page back saying that cookies needed to be enabled in the browser.
+    # I used Mechanize here because it handles cookies and redirects automatically.  When I tried to use the standard 
+    # Net::HTTP library I got a page back saying that cookies needed to be enabled in the browser.
     agent = Mechanize.new
     page = agent.get(NetflixUri)
     # Uncomment this to see what html is being returned:
     # File.open("netflix.html","wt") {|f| f.write(page.body)}
     doc = Nokogiri::HTML.parse(page.body)
     from_page_document(doc)
+  end
+
+  def self.search(text)
+    agent = Mechanize.new
+    page = agent.get("http://www.netflix.com/BrowseSelection")
+    form = page.form("ff_2")
+    form.v1 = text
+    page = agent.submit(form)
+
+    # Grab the relevant nodes in the page
+    results = page.search("#searchResultsPrimary .agMovie").map do |node|
+      box_image = node.search(".boxShot img").first
+      title_link = node.search(".title").children.first
+      [box_image, title_link]
+    end
+
+    # Filter out results that aren't shows (Netflix returns actors names in the list too).
+    results = results.reject do |box_image, title_link| 
+      box_image.nil? or title_link.nil?
+    end
+
+    # Map what we have to specific data fields
+    results = results.map do |box_image, title_link|
+      {"title" => box_image["alt"], "image_link" => box_image["src"], "link" => title_link["href"]}
+    end
+
+    results
   end
 
   def self.from_page_document(doc)

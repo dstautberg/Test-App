@@ -31,6 +31,11 @@ class ShowTest < Test::Unit::TestCase
     assert_equal "Thomas & Friends: Team up with Thomas", shows[17].title
     assert_equal "http://www.netflix.com/Movie/Thomas-Friends-Team-up-with-Thomas/70116051?trkid=772959", shows[17].link
     assert_equal "http://cdn-1.nflximg.com/us/boxshots/large/70116051.jpg", shows[17].image_link
-end
+  end
+
+  def test_show_searching
+    list = Show.search("futurama")
+    assert_equal 8, list.size
+  end
 
 end

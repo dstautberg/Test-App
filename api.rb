@@ -10,3 +10,7 @@ end
 get '/api' do
   JSON(Show.list)
 end
+
+get "/search/:text" do |text|
+  JSON(Show.search(text))
+end
