@@ -8,16 +8,26 @@ Bundler.require(:default)
 
 class NetflixScraper
 
-  def self.new_arrivals
+  # This method retrieves shows for a specific category (aka genre).  The given category name is matched case-sensitively 
+  # against category names on the Netflix website.  Possible future enhancement: an additional method that returns the
+  # current list of categories.
+  def self.shows_for_category(category)
     agent = Mechanize.new
-    page = agent.get("http://www.netflix.com/BrowseGenres/Watch_Instantly/gev?siw=1")
+    page = agent.get("http://www.netflix.com/BrowseSelection")
+    link = page.links.detect {|link| link.text == category}
+    return [] if link.nil?
+
+    page = link.click
     page.search("#mycarousel a").map do |link|
       image = link.children.first
       { "link" => link["href"], "title" => image["alt"], "image_link" => image["src"] }
     end
   end
 
-  def self.search(text)
+  # This method returns the list of shows whose title matches the given text string.  Netflix also matches against 
+  # actor names and returns shows that the actor was in, but those are more complicated to parse out, so I am
+  # filtering out actor matches for now.
+  def self.search_shows(text)
     uri = URI.escape("http://www.netflix.com/Search?v1=#{text}")
     agent = Mechanize.new
     page = agent.get(uri)
