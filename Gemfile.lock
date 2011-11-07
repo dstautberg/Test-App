@@ -32,7 +32,6 @@ DEPENDENCIES
   fakeweb
   json_pure
   mechanize
-  nokogiri
   rack-test
   sinatra
   test-unit
