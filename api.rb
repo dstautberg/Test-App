@@ -7,10 +7,10 @@ get '/' do
   erb :index
 end
 
-get '/new_arrivals' do
-  JSON(NetflixScraper.new_arrivals)
+get "/category/:category" do |category|
+  JSON(NetflixScraper.shows_for_category(category))
 end
 
 get "/search/:text" do |text|
-  JSON(NetflixScraper.search(text))
+  JSON(NetflixScraper.search_shows(text))
 end

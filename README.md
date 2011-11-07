@@ -1,6 +1,20 @@
-This test app provides a REST API (http://en.wikipedia.org/wiki/Representational_state_transfer) that lists new shows available for streaming from the Netflix website.
+This test app provides a REST API (http://en.wikipedia.org/wiki/Representational_state_transfer) that lists tv shows and movies available for streaming from the Netflix website.
 
-The REST API is available at http://dstautberg-test-app.heroku.com/api, and returns a list of new shows in JSON format (http://www.json.org).  The data is an array of hashes in the following layout:
+### REST API Endpoints
+
+Retrieve shows for a single category: http://dstautberg-test-app.heroku.com/category/category_name
+
+> Example: http://dstautberg-test-app.heroku.com/category/New%20Arrivals
+
+Retrieve shows matching the given search text: http://dstautberg-test-app.heroku.com/search/search_text
+
+> Example: http://dstautberg-test-app.heroku.com/search/simpsons
+
+Keep in mind that special characters in URL's must be encoded to be parsed properly (see http://en.wikipedia.org/wiki/Percent-encoding).
+
+### Data Format
+
+Both API endpoints return show data in JSON format (http://www.json.org) as an array of hashes in the following layout:
 
     [
       {
