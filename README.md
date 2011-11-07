@@ -8,7 +8,7 @@ Retrieve shows for a single category: http://dstautberg-test-app.heroku.com/cate
 
 Retrieve shows matching the given search text: http://dstautberg-test-app.heroku.com/search/search_text
 
-> Example: http://localhost:4567/search/simpsons
+> Example: http://dstautberg-test-app.heroku.com/search/simpsons
 
 Keep in mind that special characters in URL's must be encoded to be parsed properly (see http://en.wikipedia.org/wiki/Percent-encoding).
 
