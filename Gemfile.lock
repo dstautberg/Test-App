@@ -10,7 +10,7 @@ GEM
       webrobots (~> 0.0, >= 0.0.9)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.9)
-    nokogiri (1.5.0-x86-mingw32)
+    nokogiri (1.5.0)
     rack (1.3.5)
     rack-protection (1.1.4)
       rack
@@ -26,7 +26,6 @@ GEM
       nokogiri (>= 1.4.4)
 
 PLATFORMS
-  x86-mingw32
 
 DEPENDENCIES
   fakeweb
