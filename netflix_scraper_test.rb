@@ -1,6 +1,6 @@
 require "rubygems"
 require "bundler/setup"
-Bundler.require(:test)
+Bundler.require(:default, :test)
 require "./netflix_scraper"
 
 class NetflixScraperTest < Test::Unit::TestCase

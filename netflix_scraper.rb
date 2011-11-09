@@ -1,12 +1,9 @@
-require "rubygems"
-require "bundler/setup"
-Bundler.require(:default)
 
-# This class retrieves tv shows and movies available for streaming on the Netflix website.
+# This module retrieves tv shows and movies available for streaming on the Netflix website.
 # I used Mechanize because it handles cookies and redirects automatically -- when I tried to use the
 # standard Net::HTTP library I got a page back saying that cookies needed to be enabled in the browser.
 
-class NetflixScraper
+module NetflixScraper
 
   # This method retrieves shows for a specific category (aka genre).  The given category name is matched case-sensitively 
   # against category names on the Netflix website.  Possible future enhancement: an additional method that returns the

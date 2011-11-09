@@ -3,6 +3,9 @@ require "bundler/setup"
 Bundler.require(:test)
 require "./api"
 
+# Note: These tests don't using mocking or FakeWeb because they are intended to access the actual Netflix 
+# website, so it they change their html or rename categories a test will break and let us know.
+
 class ApiTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
